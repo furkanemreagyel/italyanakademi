@@ -3,230 +3,129 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>İtalyan Akademi | Yakında Yayında</title>
-    <meta
-      name="description"
-      content="İtalya'da üniversite başvuru sürecini birlikte planlamak için İtalyan Akademi yakında yayında."
-    />
-    <script src="https://cdn.tailwindcss.com"></script>
+    <title>İtalyan Akademi | İtalya'da Üniversiteye Giden Yol</title>
+    <meta name="description" content="İtalyan Akademi, uluslararası öğrenciler için İtalya'da üniversite başvurusu, sınav hazırlığı ve yerleşme süreçlerini sadeleştirir." />
+    <style>
+      :root { --ink: #1e2723; --muted: #64706a; --paper: #f7f8f5; --line: #dfe5df; --green: #2d6a4f; --red: #b75d55; --white: #fff; }
+      * { box-sizing: border-box; }
+      html { scroll-behavior: smooth; }
+      body { margin: 0; background: var(--paper); color: var(--ink); font-family: Georgia, "Times New Roman", serif; -webkit-font-smoothing: antialiased; }
+      a { color: inherit; text-decoration: none; }
+      button, input { font: inherit; }
+      .page { min-height: 100vh; overflow: hidden; }
+      .tricolor { display: grid; grid-template-columns: 1fr 1fr 1fr; height: 4px; }
+      .tricolor span:nth-child(1) { background: #6caa81; }
+      .tricolor span:nth-child(2) { background: #f3f1e8; }
+      .tricolor span:nth-child(3) { background: #c97970; }
+      .wrap { width: min(1120px, calc(100% - 40px)); margin: 0 auto; }
+      header { border-bottom: 1px solid var(--line); background: rgba(247, 248, 245, .94); }
+      nav { height: 76px; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+      .brand { display: flex; align-items: center; gap: 10px; font-size: 18px; font-weight: bold; letter-spacing: -.02em; }
+      .mark { width: 24px; height: 24px; border: 1px solid var(--green); border-radius: 50%; position: relative; }
+      .mark::after { content: ""; position: absolute; inset: 5px; border-radius: 50%; background: var(--green); }
+      .nav-actions { display: flex; align-items: center; gap: 20px; font-family: Arial, sans-serif; font-size: 13px; }
+      .text-button { padding: 0; border: 0; background: none; color: var(--muted); cursor: pointer; }
+      .text-button:hover, .nav-link:hover { color: var(--green); }
+      .nav-link { color: var(--green); font-weight: bold; }
+      main { padding: 78px 0 100px; }
+      .hero { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(320px, .9fr); gap: 90px; align-items: center; }
+      .eyebrow { margin: 0 0 20px; color: var(--green); font-family: Arial, sans-serif; font-size: 11px; font-weight: bold; letter-spacing: .13em; text-transform: uppercase; }
+      h1 { max-width: 680px; margin: 0; font-size: clamp(42px, 6vw, 72px); line-height: .98; letter-spacing: -.055em; font-weight: 500; }
+      .hero-copy { max-width: 590px; margin: 26px 0 0; color: var(--muted); font-size: 19px; line-height: 1.55; }
+      .signup { display: flex; max-width: 500px; margin-top: 34px; padding-bottom: 8px; border-bottom: 1px solid var(--ink); }
+      .signup input { min-width: 0; flex: 1; padding: 12px 0; border: 0; outline: 0; background: transparent; color: var(--ink); font-family: Arial, sans-serif; font-size: 14px; }
+      .signup input::placeholder { color: #9aa39d; }
+      .signup button { padding: 12px 0 12px 18px; border: 0; background: transparent; color: var(--green); cursor: pointer; font-family: Arial, sans-serif; font-size: 13px; font-weight: bold; white-space: nowrap; }
+      .signup button:hover { color: var(--red); }
+      .form-note { min-height: 20px; margin: 9px 0 0; color: var(--muted); font-family: Arial, sans-serif; font-size: 12px; }
+      .route { position: relative; min-height: 320px; padding: 38px; border: 1px solid var(--line); background: var(--white); }
+      .route::before { content: ""; position: absolute; top: -1px; left: 38px; width: 70px; height: 3px; background: var(--red); }
+      .route-label { margin: 0 0 42px; color: var(--muted); font-family: Arial, sans-serif; font-size: 11px; font-weight: bold; letter-spacing: .1em; text-transform: uppercase; }
+      .route-step { display: grid; grid-template-columns: 30px 1fr; gap: 14px; align-items: start; margin-bottom: 27px; }
+      .step-number { color: var(--green); font-family: Arial, sans-serif; font-size: 12px; font-weight: bold; }
+      .route-step strong { display: block; margin-bottom: 4px; font-size: 18px; font-weight: 500; }
+      .route-step span { color: var(--muted); font-family: Arial, sans-serif; font-size: 12px; line-height: 1.5; }
+      .rule { height: 1px; margin: 105px 0 70px; background: var(--line); }
+      .section-intro { display: grid; grid-template-columns: .75fr 1fr; gap: 90px; align-items: start; }
+      h2 { margin: 0; font-size: 38px; line-height: 1.05; letter-spacing: -.045em; font-weight: 500; }
+      .section-intro p { max-width: 550px; margin: 0; color: var(--muted); font-size: 18px; line-height: 1.55; }
+      .features { display: grid; grid-template-columns: repeat(3, 1fr); gap: 34px; margin-top: 55px; }
+      .feature { padding-top: 18px; border-top: 2px solid var(--green); }
+      .feature:nth-child(2) { border-top-color: #c7a75d; }
+      .feature:nth-child(3) { border-top-color: var(--red); }
+      .feature-index { color: var(--muted); font-family: Arial, sans-serif; font-size: 11px; }
+      h3 { margin: 25px 0 12px; font-size: 22px; font-weight: 500; }
+      .feature p { margin: 0; color: var(--muted); font-family: Arial, sans-serif; font-size: 14px; line-height: 1.6; }
+      .ai-note { display: grid; grid-template-columns: 1fr 1fr; gap: 70px; margin-top: 112px; padding: 48px 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+      .ai-note p { margin: 0; color: var(--muted); font-family: Arial, sans-serif; font-size: 14px; line-height: 1.7; }
+      .ai-note strong { color: var(--ink); }
+      footer { padding: 27px 0 35px; color: var(--muted); font-family: Arial, sans-serif; font-size: 12px; }
+      .footer-inner { display: flex; justify-content: space-between; gap: 20px; }
+      .visually-hidden { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
+      @media (max-width: 760px) {
+        .wrap { width: min(100% - 32px, 560px); }
+        nav { height: 68px; }
+        .nav-link { display: none; }
+        main { padding: 54px 0 70px; }
+        .hero, .section-intro, .ai-note { grid-template-columns: 1fr; gap: 42px; }
+        h1 { font-size: clamp(42px, 13vw, 62px); }
+        .hero-copy { font-size: 17px; }
+        .route { min-height: auto; padding: 30px 24px; }
+        .route::before { left: 24px; }
+        .rule { margin: 76px 0 52px; }
+        h2 { font-size: 34px; }
+        .features { grid-template-columns: 1fr; gap: 32px; margin-top: 40px; }
+        .ai-note { margin-top: 76px; padding: 38px 0; }
+        .footer-inner { flex-direction: column; gap: 8px; }
+      }
+    </style>
   </head>
-  <body class="min-h-screen bg-slate-950 text-slate-100 antialiased">
-    <div class="relative isolate overflow-hidden">
-      <div class="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_top,_#1e293b,_#020617_55%)]"></div>
-      <header class="border-b border-white/10">
-        <nav class="mx-auto flex max-w-6xl items-center justify-between px-6 py-4 lg:px-8">
-          <a href="#top" class="text-lg font-semibold tracking-wide">İtalyan Akademi</a>
-          <div class="flex items-center gap-3">
-            <button
-              id="lang-toggle"
-              type="button"
-              class="rounded-full border border-white/20 px-4 py-2 text-sm font-medium hover:border-emerald-300 hover:text-emerald-200"
-              aria-label="Dil değiştir"
-            >
-              TR | EN
-            </button>
-            <a
-              href="#waitlist"
-              class="rounded-full bg-emerald-400 px-4 py-2 text-sm font-semibold text-slate-950 hover:bg-emerald-300"
-              data-i18n="navCta"
-              >Bekleme Listesi</a
-            >
-          </div>
+  <body>
+    <div class="page">
+      <div class="tricolor" aria-hidden="true"><span></span><span></span><span></span></div>
+      <header>
+        <nav class="wrap">
+          <a class="brand" href="#top"><span class="mark" aria-hidden="true"></span>İtalyan Akademi</a>
+          <div class="nav-actions"><a class="nav-link" href="#how-it-works" data-i18n="navHow">Nasıl çalışır?</a><button class="text-button" id="lang-toggle" type="button" aria-label="Switch to English">EN</button></div>
         </nav>
       </header>
-
-      <main id="top" class="mx-auto max-w-6xl px-6 pb-20 pt-14 lg:px-8">
-        <section class="grid gap-12 lg:grid-cols-[1.15fr_0.85fr] lg:items-center">
+      <main id="top" class="wrap">
+        <section class="hero">
           <div>
-            <div class="mb-6 inline-flex items-center gap-2 rounded-full border border-emerald-400/40 bg-emerald-400/10 px-4 py-1.5 text-sm">
-              <span class="h-2.5 w-2.5 animate-pulse rounded-full bg-emerald-300" aria-hidden="true"></span>
-              <span data-i18n="badge">● Yakında Yayında</span>
-            </div>
-            <h1 class="text-4xl font-bold leading-tight tracking-tight text-white sm:text-5xl" data-i18n="heroTitle">
-              İtalya üniversite hayalini birlikte net bir plana dönüştürelim.
-            </h1>
-            <p class="mt-5 max-w-2xl text-lg text-slate-300" data-i18n="heroSubtitle">
-              İtalyan Akademi'de TIL &amp; TOLC hazırlığından başvuru takvimine, vize ve kampüs başlangıcına kadar tüm süreci birebir mentorlukla sadeleştiriyorum.
-            </p>
-
-            <form id="waitlist" class="mt-8 flex flex-col gap-3 sm:flex-row" action="#" method="post">
-              <label for="email" class="sr-only" data-i18n="emailLabel">E-posta adresiniz</label>
-              <input
-                id="email"
-                name="email"
-                type="email"
-                required
-                autocomplete="email"
-                class="w-full rounded-xl border border-white/15 bg-white/5 px-4 py-3 text-slate-100 placeholder:text-slate-400 focus:border-emerald-300 focus:outline-none"
-                placeholder="E-posta adresiniz"
-                data-i18n-placeholder="emailPlaceholder"
-              />
-              <button
-                type="submit"
-                class="rounded-xl bg-emerald-400 px-6 py-3 font-semibold text-slate-950 transition hover:bg-emerald-300"
-                data-i18n="emailCta"
-              >
-                Erken Erişim Al
-              </button>
-            </form>
-            <p class="mt-3 text-sm text-slate-400" data-i18n="formNote">
-              Spam yok. Açılış ve ilk mentorluk kontenjanı duyurularını paylaşacağım.
-            </p>
-
-            <div class="mt-8 flex flex-wrap items-center gap-4 text-sm text-slate-300">
-              <a href="#" class="hover:text-emerald-200" data-i18n="socialLinkedin">LinkedIn (yakında)</a>
-              <span aria-hidden="true">•</span>
-              <a href="#" class="hover:text-emerald-200" data-i18n="socialInstagram">Instagram (yakında)</a>
-              <span aria-hidden="true">•</span>
-              <a href="mailto:hello@italyanakademi.com" class="hover:text-emerald-200">hello@italyanakademi.com</a>
-            </div>
+            <p class="eyebrow" data-i18n="eyebrow">İtalya'da üniversiteye giden yol</p>
+            <h1 data-i18n="heroTitle">Başvurunuzu değil, yolculuğunuzu planlayın.</h1>
+            <p class="hero-copy" data-i18n="heroSubtitle">İtalyan Akademi, uluslararası öğrencilerin İtalya'da üniversiteye kabul, sınav ve yerleşme süreçlerini tek bir net plan altında toplar.</p>
+            <form class="signup" id="waitlist" action="#" method="post"><label for="email" class="visually-hidden" data-i18n="emailLabel">E-posta adresiniz</label><input id="email" name="email" type="email" required autocomplete="email" placeholder="E-posta adresiniz" data-i18n-placeholder="emailPlaceholder" /><button type="submit" data-i18n="emailCta">Erken erişim al →</button></form>
+            <p class="form-note" id="form-note" data-i18n="formNote">PoliTo odaklı ilk sürüm için listeye katılın.</p>
           </div>
-
-          <div class="rounded-2xl border border-white/10 bg-white/5 p-6 shadow-2xl shadow-emerald-900/20 backdrop-blur">
-            <h2 class="text-xl font-semibold text-white" data-i18n="pillarsTitle">Neler olacak?</h2>
-            <div class="mt-5 grid gap-4">
-              <article class="rounded-xl border border-white/10 bg-slate-900/70 p-4">
-                <h3 class="font-semibold text-emerald-200" data-i18n="pillar1Title">Üniversite Başvuru Yol Haritası</h3>
-                <p class="mt-2 text-sm text-slate-300" data-i18n="pillar1Desc">
-                  PoliTo, PoliMi ve diğer güçlü İtalyan üniversiteleri için başvuru adımlarını doğru sırada planlayın.
-                </p>
-              </article>
-              <article class="rounded-xl border border-white/10 bg-slate-900/70 p-4">
-                <h3 class="font-semibold text-emerald-200" data-i18n="pillar2Title">TIL &amp; TOLC Sınav Ustalığı</h3>
-                <p class="mt-2 text-sm text-slate-300" data-i18n="pillar2Desc">
-                  Hedef programa göre hangi sınava nasıl hazırlanacağınızı netleştiren odaklı çalışma rehberi.
-                </p>
-              </article>
-              <article class="rounded-xl border border-white/10 bg-slate-900/70 p-4">
-                <h3 class="font-semibold text-emerald-200" data-i18n="pillar3Title">Onboarding &amp; Mentorluk</h3>
-                <p class="mt-2 text-sm text-slate-300" data-i18n="pillar3Desc">
-                  Vize, konaklama ve kampüse geçiş süreçlerinde birebir destekle İtalya başlangıcınızı kolaylaştırın.
-                </p>
-              </article>
-            </div>
-          </div>
+          <div class="route" aria-label="Student journey"><p class="route-label" data-i18n="routeLabel">Öğrenci yolculuğu / 01</p><div class="route-step"><span class="step-number">01</span><div><strong data-i18n="route1Title">Hedef program</strong><span data-i18n="route1Desc">Politecnico di Torino ve doğru bölümle başlayın.</span></div></div><div class="route-step"><span class="step-number">02</span><div><strong data-i18n="route2Title">Hazırlık</strong><span data-i18n="route2Desc">TIL-I, TOLC ve teknik konular için çalışın.</span></div></div><div class="route-step"><span class="step-number">03</span><div><strong data-i18n="route3Title">Yerleşme</strong><span data-i18n="route3Desc">Belgelerden kampüse varışa kadar ilerleyin.</span></div></div></div>
         </section>
-
-        <section class="mt-16 rounded-2xl border border-white/10 bg-white/5 p-8">
-          <h2 class="text-2xl font-semibold text-white" data-i18n="founderTitle">Kurucudan Not</h2>
-          <p class="mt-4 text-slate-300" data-i18n="founderNote">
-            İtalya'da mühendislik ve akademik yolculuk boyunca keşke biri bana adım adım rehberlik etseydi dediğim anlardan yola çıktım. Bu yüzden İtalyan Akademi'yi; bilgiyi sadeleştiren, birebir mentorluk sunan ve her öğrencinin hedefini gerçek bir plana dönüştüren bir platform olarak tek başıma inşa ediyorum.
-          </p>
-        </section>
+        <div class="rule"></div>
+        <section id="how-it-works"><div class="section-intro"><h2 data-i18n="whatTitle">Ne yapıyorum?</h2><p data-i18n="whatDesc">Karmaşık başvuru bilgisini, öğrencinin bugün ne yapması gerektiğini gösteren sade bir çalışma alanına dönüştürüyorum. İlk odağım: PoliTo ve TIL-I ile İtalya'ya mühendislik başvurusu.</p></div><div class="features"><article class="feature"><span class="feature-index">01 / <span data-i18n="feature1Label">SINAV</span></span><h3 data-i18n="feature1Title">TIL &amp; TOLC hazırlığı</h3><p data-i18n="feature1Desc">Matematik, fizik ve mantık sorularında adım adım açıklama ve kişisel tekrar planı.</p></article><article class="feature"><span class="feature-index">02 / <span data-i18n="feature2Label">BAŞVURU</span></span><h3 data-i18n="feature2Title">Kurala dayalı yönlendirme</h3><p data-i18n="feature2Desc">Bando, Universitaly, CIMEA ve burs süreçlerini profilinize göre kontrol listesine çevirme.</p></article><article class="feature"><span class="feature-index">03 / <span data-i18n="feature3Label">VARIŞ</span></span><h3 data-i18n="feature3Title">İtalya'ya başlangıç</h3><p data-i18n="feature3Desc">Codice Fiscale, oturum izni, konaklama ve kayıt adımlarını doğru sırada tamamlama.</p></article></div></section>
+        <section class="ai-note"><h2 data-i18n="aiTitle">Yapay zekâ nasıl yardımcı oluyor?</h2><p data-i18n="aiDesc">Yapay zekâyı genel tavsiye üretmek için değil, resmî kaynakları anlamlandırmak ve öğrenme sürecini kişiselleştirmek için kullanıyorum. Sorularınızı adım adım inceler, yüklediğiniz belgelerden ilgili koşulları bulur ve her öneriyi takip edilebilir bir sonraki adıma bağlarım.</p></section>
       </main>
-
-      <footer class="border-t border-white/10 py-8">
-        <div class="mx-auto flex max-w-6xl flex-col gap-2 px-6 text-sm text-slate-400 sm:flex-row sm:items-center sm:justify-between lg:px-8">
-          <p data-i18n="footerCopyright">© <span id="year"></span> İtalyan Akademi. Tüm hakları saklıdır.</p>
-          <p data-i18n="footerContact">İletişim: hello@italyanakademi.com</p>
-        </div>
-      </footer>
+      <footer><div class="wrap footer-inner"><span data-i18n="footerCopyright">© 2026 İtalyan Akademi</span><span>hello@italyanakademi.com</span></div></footer>
     </div>
-
     <script>
       const translations = {
-        tr: {
-          navCta: "Bekleme Listesi",
-          badge: "● Yakında Yayında",
-          heroTitle: "İtalya üniversite hayalini birlikte net bir plana dönüştürelim.",
-          heroSubtitle:
-            "İtalyan Akademi'de TIL & TOLC hazırlığından başvuru takvimine, vize ve kampüs başlangıcına kadar tüm süreci birebir mentorlukla sadeleştiriyorum.",
-          emailLabel: "E-posta adresiniz",
-          emailPlaceholder: "E-posta adresiniz",
-          emailCta: "Erken Erişim Al",
-          formNote: "Spam yok. Açılış ve ilk mentorluk kontenjanı duyurularını paylaşacağım.",
-          socialLinkedin: "LinkedIn (yakında)",
-          socialInstagram: "Instagram (yakında)",
-          pillarsTitle: "Neler olacak?",
-          pillar1Title: "Üniversite Başvuru Yol Haritası",
-          pillar1Desc: "PoliTo, PoliMi ve diğer güçlü İtalyan üniversiteleri için başvuru adımlarını doğru sırada planlayın.",
-          pillar2Title: "TIL & TOLC Sınav Ustalığı",
-          pillar2Desc: "Hedef programa göre hangi sınava nasıl hazırlanacağınızı netleştiren odaklı çalışma rehberi.",
-          pillar3Title: "Onboarding & Mentorluk",
-          pillar3Desc: "Vize, konaklama ve kampüse geçiş süreçlerinde birebir destekle İtalya başlangıcınızı kolaylaştırın.",
-          founderTitle: "Kurucudan Not",
-          founderNote:
-            "İtalya'da mühendislik ve akademik yolculuk boyunca keşke biri bana adım adım rehberlik etseydi dediğim anlardan yola çıktım. Bu yüzden İtalyan Akademi'yi; bilgiyi sadeleştiren, birebir mentorluk sunan ve her öğrencinin hedefini gerçek bir plana dönüştüren bir platform olarak tek başıma inşa ediyorum.",
-          footerCopyright: "© {year} İtalyan Akademi. Tüm hakları saklıdır.",
-          footerContact: "İletişim: hello@italyanakademi.com",
-          langToggle: "TR | EN",
-          langAria: "Switch to English"
-        },
-        en: {
-          navCta: "Join Waitlist",
-          badge: "● Launching Soon",
-          heroTitle: "Let's turn your Italy university dream into a clear action plan.",
-          heroSubtitle:
-            "At İtalyan Akademi, I simplify your full journey with personal mentorship—from TIL & TOLC prep to applications, visa steps, and your first campus transition.",
-          emailLabel: "Your email address",
-          emailPlaceholder: "Your email address",
-          emailCta: "Get Early Access",
-          formNote: "No spam. I only share launch updates and first mentorship openings.",
-          socialLinkedin: "LinkedIn (soon)",
-          socialInstagram: "Instagram (soon)",
-          pillarsTitle: "What you'll get",
-          pillar1Title: "University Admissions Roadmap",
-          pillar1Desc: "Plan the right sequence of admissions steps for PoliTo, PoliMi, and other top Italian universities.",
-          pillar2Title: "TIL & TOLC Exam Mastery",
-          pillar2Desc: "A focused study guidance to decide what to prepare, when to prepare, and how to stay exam-ready.",
-          pillar3Title: "Onboarding & Mentorship",
-          pillar3Desc: "Get one-on-one support on visa, housing, and campus transition so your move to Italy is smooth.",
-          founderTitle: "A Note from the Founder",
-          founderNote:
-            "I created İtalyan Akademi after living through the engineering and academic journey in Italy and wishing I had a practical step-by-step guide. I am building this platform solo to deliver clear strategy, personal mentorship, and accountable progress for each student.",
-          footerCopyright: "© {year} İtalyan Akademi. All rights reserved.",
-          footerContact: "Contact: hello@italyanakademi.com",
-          langToggle: "EN | TR",
-          langAria: "Türkçeye geç"
-        }
+        tr: { navHow: "Nasıl çalışır?", eyebrow: "İtalya'da üniversiteye giden yol", heroTitle: "Başvurunuzu değil, yolculuğunuzu planlayın.", heroSubtitle: "İtalyan Akademi, uluslararası öğrencilerin İtalya'da üniversiteye kabul, sınav ve yerleşme süreçlerini tek bir net plan altında toplar.", emailLabel: "E-posta adresiniz", emailPlaceholder: "E-posta adresiniz", emailCta: "Erken erişim al →", formNote: "PoliTo odaklı ilk sürüm için listeye katılın.", routeLabel: "Öğrenci yolculuğu / 01", route1Title: "Hedef program", route1Desc: "Politecnico di Torino ve doğru bölümle başlayın.", route2Title: "Hazırlık", route2Desc: "TIL-I, TOLC ve teknik konular için çalışın.", route3Title: "Yerleşme", route3Desc: "Belgelerden kampüse varışa kadar ilerleyin.", whatTitle: "Ne yapıyorum?", whatDesc: "Karmaşık başvuru bilgisini, öğrencinin bugün ne yapması gerektiğini gösteren sade bir çalışma alanına dönüştürüyorum. İlk odağım: PoliTo ve TIL-I ile İtalya'ya mühendislik başvurusu.", feature1Label: "SINAV", feature1Title: "TIL & TOLC hazırlığı", feature1Desc: "Matematik, fizik ve mantık sorularında adım adım açıklama ve kişisel tekrar planı.", feature2Label: "BAŞVURU", feature2Title: "Kurala dayalı yönlendirme", feature2Desc: "Bando, Universitaly, CIMEA ve burs süreçlerini profilinize göre kontrol listesine çevirme.", feature3Label: "VARIŞ", feature3Title: "İtalya'ya başlangıç", feature3Desc: "Codice Fiscale, oturum izni, konaklama ve kayıt adımlarını doğru sırada tamamlama.", aiTitle: "Yapay zekâ nasıl yardımcı oluyor?", aiDesc: "Yapay zekâyı genel tavsiye üretmek için değil, resmî kaynakları anlamlandırmak ve öğrenme sürecini kişiselleştirmek için kullanıyorum. Sorularınızı adım adım inceler, yüklediğiniz belgelerden ilgili koşulları bulur ve her öneriyi takip edilebilir bir sonraki adıma bağlarım.", footerCopyright: "© 2026 İtalyan Akademi", langAria: "Switch to English", success: "Teşekkürler. İlginiz kaydedildi." },
+        en: { navHow: "How it works", eyebrow: "Your route to university in Italy", heroTitle: "Plan the journey, not just the application.", heroSubtitle: "İtalyan Akademi brings admissions, exam preparation, and arrival in Italy into one clear plan for international students.", emailLabel: "Your email address", emailPlaceholder: "Your email address", emailCta: "Get early access →", formNote: "Join the list for the first PoliTo-focused release.", routeLabel: "Student journey / 01", route1Title: "Target programme", route1Desc: "Start with Politecnico di Torino and the right degree.", route2Title: "Preparation", route2Desc: "Study for TIL-I, TOLC, and the technical subjects that matter.", route3Title: "Arrival", route3Desc: "Move from documents to your first day on campus.", whatTitle: "What I do", whatDesc: "I turn fragmented admissions information into a focused workspace that shows students what to do next. The first focus: engineering applications to Italy through PoliTo and TIL-I.", feature1Label: "EXAMS", feature1Title: "TIL & TOLC preparation", feature1Desc: "Step-by-step explanations and a personal review plan for maths, physics, and logic.", feature2Label: "ADMISSIONS", feature2Title: "Rules-based guidance", feature2Desc: "Turn the Bando, Universitaly, CIMEA, and scholarship requirements into a profile-specific checklist.", feature3Label: "ARRIVAL", feature3Title: "Starting in Italy", feature3Desc: "Complete Codice Fiscale, residence permit, housing, and enrolment steps in the right order.", aiTitle: "How AI helps", aiDesc: "I use AI not to produce generic advice, but to make official sources easier to act on and personalise the learning process. It works through your questions step by step, finds relevant conditions in uploaded documents, and connects each recommendation to a clear next action.", footerCopyright: "© 2026 İtalyan Akademi", langAria: "Türkçeye geç", success: "Thank you. Your interest has been recorded." }
       };
-
       const langToggle = document.getElementById("lang-toggle");
-      const yearElement = document.getElementById("year");
       const savedLang = localStorage.getItem("ia-lang");
       const defaultLang = savedLang === "tr" || savedLang === "en" ? savedLang : "tr";
-
       function setLanguage(lang) {
         const locale = translations[lang] ? lang : "tr";
         localStorage.setItem("ia-lang", locale);
         document.documentElement.lang = locale;
-
-        document.querySelectorAll("[data-i18n]").forEach((el) => {
-          const key = el.dataset.i18n;
-          const value = translations[locale][key];
-          if (!value) return;
-          if (key === "footerCopyright") {
-            el.textContent = value.replace("{year}", new Date().getFullYear());
-            return;
-          }
-          el.textContent = value;
-        });
-
-        document.querySelectorAll("[data-i18n-placeholder]").forEach((el) => {
-          const key = el.dataset.i18nPlaceholder;
-          const value = translations[locale][key];
-          if (value) {
-            el.setAttribute("placeholder", value);
-          }
-        });
-
-        const labelValue = translations[locale].emailLabel;
-        const emailField = document.getElementById("email");
-        if (emailField && labelValue) {
-          emailField.setAttribute("aria-label", labelValue);
-        }
-
-        langToggle.textContent = translations[locale].langToggle;
+        document.querySelectorAll("[data-i18n]").forEach((element) => { const value = translations[locale][element.dataset.i18n]; if (value) element.textContent = value; });
+        document.querySelectorAll("[data-i18n-placeholder]").forEach((element) => element.setAttribute("placeholder", translations[locale][element.dataset.i18nPlaceholder]));
+        langToggle.textContent = locale === "tr" ? "EN" : "TR";
         langToggle.setAttribute("aria-label", translations[locale].langAria);
       }
-
-      yearElement.textContent = new Date().getFullYear();
       setLanguage(defaultLang);
-
-      langToggle.addEventListener("click", () => {
-        const currentLang = localStorage.getItem("ia-lang") || defaultLang;
-        setLanguage(currentLang === "tr" ? "en" : "tr");
-      });
+      langToggle.addEventListener("click", () => setLanguage(document.documentElement.lang === "tr" ? "en" : "tr"));
+      document.getElementById("waitlist").addEventListener("submit", (event) => { event.preventDefault(); document.getElementById("form-note").textContent = translations[document.documentElement.lang].success; event.target.reset(); });
     </script>
   </body>
 </html>
